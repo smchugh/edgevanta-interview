@@ -50,6 +50,19 @@ export const addNumber = mutation({
   },
 });
 
+export const addMessage = mutation({
+  // Validators for arguments.
+  args: {
+    value: v.string(),
+    sender: v.string(),
+  },
+
+  // Mutation implementation.
+  handler: async (ctx, args) => {
+    await ctx.db.insert("messages", { value: args.value, sender: args.sender });
+  },
+});
+
 // You can fetch data from and send data to third-party APIs via an action:
 export const myAction = action({
   // Validators for arguments.
