@@ -41,6 +41,16 @@ function SignedIn() {
         <SignOutButton />
       </p>
       <p>
+        <Link href="/alice">
+          Alice
+        </Link>
+      </p>
+      <p>
+        <Link href="/bob">
+          Bob
+        </Link>
+      </p>
+      <p>
         Click the button below and open this page in another window - this data
         is persisted in the Convex cloud database!
       </p>
