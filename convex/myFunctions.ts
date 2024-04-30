@@ -50,6 +50,27 @@ export const addNumber = mutation({
   },
 });
 
+export const listMessages = queryWithAuth({
+  // Validators for arguments.
+  args: {
+    count: v.number(),
+  },
+
+  // Query implementation.
+  handler: async (ctx, args) => {
+    //// Read the database as many times as you need here.
+    //// See https://docs.convex.dev/database/reading-data.
+    const messages = await ctx.db
+      .query("messages")
+      // Ordered by _creationTime, return most recent
+      .order("desc")
+      .take(args.count);
+    return {
+      latestMessages: messages.toReversed(),
+    };
+  },
+});
+
 export const addMessage = mutation({
   // Validators for arguments.
   args: {
