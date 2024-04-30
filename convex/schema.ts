@@ -14,6 +14,10 @@ export default defineSchema(
     numbers: defineTable({
       value: v.number(),
     }),
+    messages: defineTable({
+      value: v.string(),
+      sender: v.string(),
+    }),
   },
   // If you ever get an error about schema mismatch
   // between your data and your schema, and you cannot
